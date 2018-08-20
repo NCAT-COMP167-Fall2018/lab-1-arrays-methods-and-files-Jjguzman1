@@ -25,19 +25,44 @@ public class PlayerStats {
         String [] names = new String[80];
         int [] scores = new int[80];
         
-        try {
-            Scanner reader = new Scanner(new File(args[0]));
+        readData(names, scores, args[0]);
+        
+        System.out.println(names[0] + " " + scores[0]);
+    }
+    
+    public static void readData(String[] names, int[] scores, String filename){
+       try {
+            Scanner reader = new Scanner(new File(filename));
             
-            //Anything that depends on reader ^^
+            int currentIndex = 0;
+            while(reader.hasNext()){
+                String[] line = reader.nextLine().split(" ");
+                names[currentIndex] = line[0];
+                scores[currentIndex] = Integer.parseInt(line[1]);
+                currentIndex++;
+            }
+            //Anything that depends on reader ^^(above this javadoc).
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PlayerStats.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("File not found in  main method.");
         }
     }
-    
-    public static void sortStats(String[] player, int[] score, String file){
-       
-        
-        
+    /**
+     * SortData will sort the top 10 player's names and scores
+     * @param names
+     * @param scores will determine placement
+     * @param filename
+     */
+    public static void sortData(String[] names, int[] scores, String filename){
+            try {
+                Scanner sorter = new Scanner(new File(filename));
+            
+                int currentIndex = 0;
+                
+            //Anything that depends on reader ^^(above this javadoc).
+            }catch (FileNotFoundException ex) {
+            Logger.getLogger(PlayerStats.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("File not found in  main method.");
+             }
     }
 }
